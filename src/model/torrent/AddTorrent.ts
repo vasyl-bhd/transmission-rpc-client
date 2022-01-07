@@ -1,9 +1,9 @@
-import {GetTorrentRequestArguments, GetTorrentResponseArguments} from './GetTorrent';
+import { GetTorrentRequestArguments, GetTorrentResponseArguments } from './GetTorrent';
 import { AbstractRequest } from './AbstractRequest';
 import { TorrentActions } from './TorrentActions';
-import { RpcResponse } from './CommonTypes';
+import { Argument, RpcResponse } from './CommonTypes';
 
-export interface AddTorrentRequestArguments {
+export type AddTorrentRequestArguments = {
   /**
    * pointer to a string of one or more cookies.
    */
@@ -52,7 +52,7 @@ export interface AddTorrentRequestArguments {
    *  indices of normal-priority file(s)
    */
   'priority-normal': number[];
-}
+} & Argument;
 
 export class AddTorrentRequest extends AbstractRequest<AddTorrentRequestArguments> {
   constructor(args: AddTorrentRequestArguments, tag?: number) {
@@ -60,7 +60,7 @@ export class AddTorrentRequest extends AbstractRequest<AddTorrentRequestArgument
   }
 
   static of(args: AddTorrentRequestArguments, tag?: number) {
-    return new AddTorrentRequest(args, tag)
+    return new AddTorrentRequest(args, tag);
   }
 }
 

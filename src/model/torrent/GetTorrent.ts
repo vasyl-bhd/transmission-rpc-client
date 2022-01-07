@@ -1,5 +1,5 @@
 import { AbstractRequest } from './AbstractRequest';
-import { RpcResponse, WithIds } from './CommonTypes';
+import { Argument, RpcResponse, WithIds } from './CommonTypes';
 import { TorrentActions } from './TorrentActions';
 
 export interface Files {
@@ -172,13 +172,16 @@ export interface Torrent {
   webseedsSendingToUs: number;
 }
 
-export interface GetTorrentRequestArguments extends WithIds {
-  fields: string[];
-}
+type TorrentKey = keyof Torrent;
 
-export interface GetTorrentResponseArguments {
+export type GetTorrentRequestArguments = {
+  fields: TorrentKey[];
+} & WithIds &
+  Argument;
+
+export type GetTorrentResponseArguments = {
   torrents: Torrent[];
-}
+} & Argument;
 
 export class GetTorrentRequest extends AbstractRequest<GetTorrentRequestArguments> {
   constructor(args: GetTorrentRequestArguments, tag?: number) {
@@ -186,7 +189,7 @@ export class GetTorrentRequest extends AbstractRequest<GetTorrentRequestArgument
   }
 
   static of(args: GetTorrentRequestArguments, tag?: number) {
-    return new GetTorrentRequest(args, tag)
+    return new GetTorrentRequest(args, tag);
   }
 }
 

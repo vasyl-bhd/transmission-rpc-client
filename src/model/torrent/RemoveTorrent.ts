@@ -1,14 +1,15 @@
 import { AbstractRequest } from './AbstractRequest';
-import { RpcResponse, WithIds } from './CommonTypes';
+import { Argument, RpcResponse, WithIds } from './CommonTypes';
 import { TorrentActions } from './TorrentActions';
-import {MoveTorrentRequestArguments} from "./MoveTorrent";
+import { MoveTorrentRequestArguments } from './MoveTorrent';
 
-export interface RemoveTorrentRequestArguments extends WithIds {
+export type RemoveTorrentRequestArguments = {
   /**
    * delete local data. (default: false)
    */
   'delete-local-data'?: boolean;
-}
+} & WithIds &
+  Argument;
 
 export class RemoveTorrentRequest extends AbstractRequest<RemoveTorrentRequestArguments> {
   constructor(args: RemoveTorrentRequestArguments, tag?: number) {
@@ -16,7 +17,7 @@ export class RemoveTorrentRequest extends AbstractRequest<RemoveTorrentRequestAr
   }
 
   static of(args: RemoveTorrentRequestArguments, tag?: number) {
-    return new RemoveTorrentRequest(args, tag)
+    return new RemoveTorrentRequest(args, tag);
   }
 }
 

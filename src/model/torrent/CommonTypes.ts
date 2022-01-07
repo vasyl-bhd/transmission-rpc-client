@@ -12,16 +12,18 @@ export type WithIds = {
    *  <br/>
    *  (3) a string, "recently-active", for recently-active torrents
    */
-  ids?: number[];
+  ids: number[] | undefined;
 };
 
-export type RpcRequest<R> = {
+export type Argument = {};
+
+export type RpcRequest<R extends Argument> = {
   method: TorrentActions;
   arguments: R;
   tag?: number;
 };
 
-export type RpcResponse<R> = {
+export type RpcResponse<R extends Argument> = {
   result: string;
   arguments: R;
   tag?: number;

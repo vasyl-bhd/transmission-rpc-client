@@ -1,6 +1,11 @@
 import axios, { AxiosResponse } from 'axios';
 import { GetTorrentRequest, GetTorrentResponse } from '../model/torrent/GetTorrent';
-import {ClientConfig} from "./ClientConfig";
+import { ClientConfig } from './ClientConfig';
+import { AddTorrentRequest, AddTorrentResponse } from '../model/torrent/AddTorrent';
+import { Argument, RpcRequest, RpcResponse } from '../model/torrent/CommonTypes';
+import { MoveTorrentRequest, MoveTorrentResponse } from '../model/torrent/MoveTorrent';
+import { RemoveTorrentRequest, RemoveTorrentResponse } from '../model/torrent/RemoveTorrent';
+import { UpdateTorrentRequest, UpdateTorrentResponse } from '../model/torrent/UpdateTorrent';
 
 export class TransmissionClient {
   private readonly csrfHeader: string = 'x-transmission-session-id';
@@ -15,14 +20,11 @@ export class TransmissionClient {
     this.config = config;
     this.protocol = this.config.isHttps ? 'https' : 'http';
     const host = this.config.host;
-    this.host =
-     host.endsWith(this.separator)
-        ? host.substring(0, host.length - 1)
-        : host;
+    this.host = host.endsWith(this.separator) ? host.substring(0, host.length - 1) : host;
     this.url = `${this.protocol}://${this.host}/transmission/rpc`;
   }
 
-  private request<REQ, RES>(req: REQ) {
+  request<REQ extends RpcRequest<Argument>, RES extends RpcResponse<Argument>>(req: REQ): Promise<RES> {
     const getWithToken = (token: string): Promise<AxiosResponse<RES> | any> => {
       const config = {
         headers: { [this.csrfHeader]: token },
@@ -42,6 +44,22 @@ export class TransmissionClient {
   }
 
   getTorrents(req: GetTorrentRequest): Promise<GetTorrentResponse> {
+    return this.request(req);
+  }
+
+  addTorrent(req: AddTorrentRequest): Promise<AddTorrentResponse> {
+    return this.request(req);
+  }
+
+  moveTorrent(req: MoveTorrentRequest): Promise<MoveTorrentResponse> {
+    return this.request(req);
+  }
+
+  removeTorrent(req: RemoveTorrentRequest): Promise<RemoveTorrentResponse> {
+    return this.request(req);
+  }
+
+  updateTorrent(req: UpdateTorrentRequest): Promise<UpdateTorrentResponse> {
     return this.request(req);
   }
 }

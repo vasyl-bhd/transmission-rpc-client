@@ -1,5 +1,5 @@
-import {RpcRequest} from './CommonTypes';
-import {TorrentActions} from './TorrentActions';
+import { RpcRequest } from './CommonTypes';
+import { TorrentActions } from './TorrentActions';
 
 export abstract class AbstractRequest<T> implements RpcRequest<T> {
   readonly arguments: T;

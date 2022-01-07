@@ -1,9 +1,9 @@
-import {AbstractRequest} from './AbstractRequest';
-import {RpcResponse, WithIds} from './CommonTypes';
-import {TorrentActions} from './TorrentActions';
-import {AddTorrentRequestArguments} from "./AddTorrent";
+import { AbstractRequest } from './AbstractRequest';
+import { Argument, RpcResponse, WithIds } from './CommonTypes';
+import { TorrentActions } from './TorrentActions';
+import { AddTorrentRequestArguments } from './AddTorrent';
 
-export interface MoveTorrentRequestArguments extends WithIds {
+export type MoveTorrentRequestArguments = {
   /**
    * the new torrent location
    */
@@ -11,8 +11,9 @@ export interface MoveTorrentRequestArguments extends WithIds {
   /**
    * if true, move from previous location.  otherwise, search "location" for files (default: false)
    */
-  move: boolean;
-}
+  move?: boolean;
+} & WithIds &
+  Argument;
 
 export class MoveTorrentRequest extends AbstractRequest<MoveTorrentRequestArguments> {
   constructor(args: MoveTorrentRequestArguments, tag?: number) {
@@ -20,7 +21,7 @@ export class MoveTorrentRequest extends AbstractRequest<MoveTorrentRequestArgume
   }
 
   static of(args: MoveTorrentRequestArguments, tag?: number) {
-    return new MoveTorrentRequest(args, tag)
+    return new MoveTorrentRequest(args, tag);
   }
 }
 

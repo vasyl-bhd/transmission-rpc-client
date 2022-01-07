@@ -1,9 +1,9 @@
 import { AbstractRequest } from './AbstractRequest';
-import { RpcResponse, WithIds } from './CommonTypes';
+import { Argument, RpcResponse, WithIds } from './CommonTypes';
 import { TorrentActions } from './TorrentActions';
-import {RemoveTorrentRequestArguments} from "./RemoveTorrent";
+import { RemoveTorrentRequestArguments } from './RemoveTorrent';
 
-export interface UpdateTorrentRequestArguments extends WithIds {
+export type UpdateTorrentRequestArguments = {
   /**
    * this torrent's bandwidth tr_priority_t
    */
@@ -92,7 +92,8 @@ export interface UpdateTorrentRequestArguments extends WithIds {
    * true if uploadLimit is honored
    */
   uploadLimited?: boolean;
-}
+} & WithIds &
+  Argument;
 
 export class UpdateTorrentRequest extends AbstractRequest<UpdateTorrentRequestArguments> {
   constructor(args: UpdateTorrentRequestArguments, tag?: number) {
@@ -100,7 +101,7 @@ export class UpdateTorrentRequest extends AbstractRequest<UpdateTorrentRequestAr
   }
 
   static of(args: UpdateTorrentRequestArguments, tag?: number) {
-    return new UpdateTorrentRequest(args, tag)
+    return new UpdateTorrentRequest(args, tag);
   }
 }
 
