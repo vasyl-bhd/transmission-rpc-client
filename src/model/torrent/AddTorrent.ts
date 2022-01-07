@@ -1,4 +1,4 @@
-import { GetTorrentRequestArguments, GetTorrentResponseArguments } from './GetTorrent';
+import { GetTorrentResponseArguments } from './GetTorrent';
 import { AbstractRequest } from './AbstractRequest';
 import { TorrentActions } from './TorrentActions';
 import { Argument, RpcResponse } from './CommonTypes';
