@@ -16,8 +16,6 @@ const client = new TransmissionClient({
 Calling transmission:
 
 ```typescript
-import {GetTorrentRequest} from "./GetTorrent";
-
 client.getTorrents(GetTorrentRequest.of({fields: ["id", "name", "downloadDir"], ids: [1] || undefined}))
 .then(res => console.log(res))
 ```
