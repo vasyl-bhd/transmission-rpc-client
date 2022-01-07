@@ -1,6 +1,7 @@
 import { AbstractRequest } from './AbstractRequest';
 import { RpcResponse, WithIds } from './CommonTypes';
 import { TorrentActions } from './TorrentActions';
+import {RemoveTorrentRequestArguments} from "./RemoveTorrent";
 
 export interface UpdateTorrentRequestArguments extends WithIds {
   /**
@@ -96,6 +97,10 @@ export interface UpdateTorrentRequestArguments extends WithIds {
 export class UpdateTorrentRequest extends AbstractRequest<UpdateTorrentRequestArguments> {
   constructor(args: UpdateTorrentRequestArguments, tag?: number) {
     super(args, TorrentActions.TORRENT_REMOVE, tag);
+  }
+
+  static of(args: UpdateTorrentRequestArguments, tag?: number) {
+    return new UpdateTorrentRequest(args, tag)
   }
 }
 

@@ -1,6 +1,7 @@
-import { AbstractRequest } from './AbstractRequest';
-import { RpcResponse, WithIds } from './CommonTypes';
-import { TorrentActions } from './TorrentActions';
+import {AbstractRequest} from './AbstractRequest';
+import {RpcResponse, WithIds} from './CommonTypes';
+import {TorrentActions} from './TorrentActions';
+import {AddTorrentRequestArguments} from "./AddTorrent";
 
 export interface MoveTorrentRequestArguments extends WithIds {
   /**
@@ -16,6 +17,10 @@ export interface MoveTorrentRequestArguments extends WithIds {
 export class MoveTorrentRequest extends AbstractRequest<MoveTorrentRequestArguments> {
   constructor(args: MoveTorrentRequestArguments, tag?: number) {
     super(args, TorrentActions.TORRENT_SET_LOCATION, tag);
+  }
+
+  static of(args: MoveTorrentRequestArguments, tag?: number) {
+    return new MoveTorrentRequest(args, tag)
   }
 }
 

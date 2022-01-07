@@ -1,4 +1,4 @@
-import { GetTorrentResponseArguments } from './GetTorrent';
+import {GetTorrentRequestArguments, GetTorrentResponseArguments} from './GetTorrent';
 import { AbstractRequest } from './AbstractRequest';
 import { TorrentActions } from './TorrentActions';
 import { RpcResponse } from './CommonTypes';
@@ -57,6 +57,10 @@ export interface AddTorrentRequestArguments {
 export class AddTorrentRequest extends AbstractRequest<AddTorrentRequestArguments> {
   constructor(args: AddTorrentRequestArguments, tag?: number) {
     super(args, TorrentActions.TORRENT_ADD, tag);
+  }
+
+  static of(args: AddTorrentRequestArguments, tag?: number) {
+    return new AddTorrentRequest(args, tag)
   }
 }
 

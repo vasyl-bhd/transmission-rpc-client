@@ -184,6 +184,10 @@ export class GetTorrentRequest extends AbstractRequest<GetTorrentRequestArgument
   constructor(args: GetTorrentRequestArguments, tag?: number) {
     super(args, TorrentActions.TORRENT_GET, tag);
   }
+
+  static of(args: GetTorrentRequestArguments, tag?: number) {
+    return new GetTorrentRequest(args, tag)
+  }
 }
 
 export interface GetTorrentResponse extends RpcResponse<GetTorrentResponseArguments> {}
