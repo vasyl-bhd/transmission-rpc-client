@@ -1,15 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { GetTorrentRequest, GetTorrentResponse } from '../model/torrent/GetTorrent';
-
-export class ClientConfig {
-  readonly host: String;
-  readonly isHttps?: boolean;
-
-  constructor(host: String, isHttps?: boolean) {
-    this.host = host;
-    this.isHttps = isHttps || false;
-  }
-}
+import {ClientConfig} from "./ClientConfig";
 
 export class TransmissionClient {
   private readonly csrfHeader: string = 'x-transmission-session-id';
@@ -25,14 +16,14 @@ export class TransmissionClient {
     this.protocol = this.config.isHttps ? 'https' : 'http';
     const host = this.config.host;
     this.host =
-      host.indexOf(this.separator, host.length - this.separator.length) >= 0
+     host.endsWith(this.separator)
         ? host.substring(0, host.length - 1)
         : host;
     this.url = `${this.protocol}://${this.host}/transmission/rpc`;
   }
 
   private request<REQ, RES>(req: REQ) {
-    const getAxios = (req: REQ, token: string): Promise<AxiosResponse<RES> | any> => {
+    const getWithToken = (token: string): Promise<AxiosResponse<RES> | any> => {
       const config = {
         headers: { [this.csrfHeader]: token },
       };
@@ -42,12 +33,12 @@ export class TransmissionClient {
         .catch((err) => {
           if (err.response?.status === 409) {
             this.token = err.response.headers[`${this.csrfHeader}`];
-            return getAxios(req, this.token);
+            return getWithToken(this.token);
           }
           return Promise.reject(err);
         });
     };
-    return getAxios(req, this.token);
+    return getWithToken(this.token);
   }
 
   getTorrents(req: GetTorrentRequest): Promise<GetTorrentResponse> {

@@ -21,7 +21,7 @@ export interface AddTorrentRequestArguments {
    */
   metainfo?: string;
   /**
-   *if true, don't start the torrent
+   * if true, don't start the torrent
    */
   paused?: boolean;
   /**

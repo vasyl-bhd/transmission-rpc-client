@@ -8,7 +8,7 @@ export interface MoveTorrentRequestArguments extends WithIds {
    */
   location: string;
   /**
-   *if true, move from previous location.  otherwise, search "location" for files (default: false)
+   * if true, move from previous location.  otherwise, search "location" for files (default: false)
    */
   move: boolean;
 }
