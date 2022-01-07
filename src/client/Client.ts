@@ -8,7 +8,7 @@ import { RemoveTorrentRequest, RemoveTorrentResponse } from '../model/torrent/Re
 import { UpdateTorrentRequest, UpdateTorrentResponse } from '../model/torrent/UpdateTorrent';
 
 export class TransmissionClient {
-  private readonly csrfHeader: string = 'x-transmission-session-id';
+  private readonly csrfHeader: string = 'X-Transmission-Session-Id';
   private readonly separator = '/';
   private readonly config: ClientConfig;
   private readonly protocol;
@@ -26,15 +26,16 @@ export class TransmissionClient {
 
   request<REQ extends RpcRequest<Argument>, RES extends RpcResponse<Argument>>(req: REQ): Promise<RES> {
     const getWithToken = (token: string): Promise<AxiosResponse<RES> | any> => {
+      const headers = this.config.headers;
       const config = {
-        headers: { [this.csrfHeader]: token },
+        headers: { [this.csrfHeader]: token, ...headers },
       };
       return axios
         .post<RES>(this.url, req, config)
         .then((res) => res.data)
         .catch((err) => {
           if (err.response?.status === 409) {
-            this.token = err.response.headers[`${this.csrfHeader}`];
+            this.token = err.response.headers[`${this.csrfHeader.toLowerCase()}`];
             return getWithToken(this.token);
           }
           return Promise.reject(err);

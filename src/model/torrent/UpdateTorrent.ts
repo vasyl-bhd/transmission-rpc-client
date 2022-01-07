@@ -1,6 +1,6 @@
-import {AbstractRequest} from './AbstractRequest';
-import {Argument, RpcResponse, WithIds} from './CommonTypes';
-import {TorrentActions} from './TorrentActions';
+import { AbstractRequest } from './AbstractRequest';
+import { Argument, RpcResponse, WithIds } from './CommonTypes';
+import { TorrentActions } from './TorrentActions';
 
 export type UpdateTorrentRequestArguments = {
   /**
