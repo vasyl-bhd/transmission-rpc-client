@@ -2,23 +2,23 @@ import { AbstractRequest } from './AbstractRequest';
 import { Argument, RpcResponse, WithIds } from './CommonTypes';
 import { TorrentActions } from './TorrentActions';
 
-export interface Files {
+export type Files = {
   bytesCompleted: number;
   length: number;
   name: string;
 }
 
-export interface FileStats {
+export type FileStats = {
   bytesCompleted: number;
   wanted: boolean;
   priority: number;
 }
 
-export interface Labels {
+export type Labels = {
   label: string;
 }
 
-export interface Peers {
+export type Peers = {
   address: string;
   clientName: string;
   clientIsChoked: boolean;
@@ -37,7 +37,7 @@ export interface Peers {
   rateToPeer: number;
 }
 
-export interface PeersFrom {
+export type PeersFrom = {
   fromCache: number;
   fromDht: number;
   fromIncoming: number;
@@ -47,24 +47,24 @@ export interface PeersFrom {
   fromTracker: number;
 }
 
-enum Status {
-  TORRENT_STOPPED,
-  QUEUED_TO_CHECK_FILES,
-  CHECKING_FILES,
-  QUEUE_TO_DOWNLOAD,
-  DOWNLOADING,
-  QUEUE_TO_SEED,
-  SEEDING,
+export enum TorrentStatus {
+  TorrentStopped = 'Stopped',
+  QueuedToCheckFiles = 'Queued to Check files',
+  CheckingFiles = 'Checking files',
+  QueueToDownload = 'Queued',
+  Downloading = 'Downloading',
+  QueueToSeed = `Queued to Seed`,
+  Seeding = 'Seeding',
 }
 
-export interface Trackers {
+export type Trackers = {
   announce: string;
   id: number;
   scrape: string;
   tier: number;
 }
 
-export interface TrackerStats {
+export type TrackerStats = {
   announce: string;
   announceState: number;
   downloadCount: number;
@@ -93,11 +93,11 @@ export interface TrackerStats {
   tier: number;
 }
 
-export interface WebSeeds {
+export type WebSeeds = {
   webseed: string;
 }
 
-export interface Torrent {
+export type Torrent = {
   activityDate: number;
   addedDate: number;
   bandwidthPriority: number;
@@ -158,7 +158,7 @@ export interface Torrent {
   seedRatioMode: number;
   sizeWhenDone: number;
   startDate: number;
-  status: Status;
+  status: TorrentStatus;
   trackers: Trackers[];
   trackerStats: TrackerStats[];
   totalSize: number;
@@ -193,4 +193,4 @@ export class GetTorrentRequest extends AbstractRequest<GetTorrentRequestArgument
   }
 }
 
-export interface GetTorrentResponse extends RpcResponse<GetTorrentResponseArguments> {}
+export type GetTorrentResponse = {} & RpcResponse<GetTorrentResponseArguments>

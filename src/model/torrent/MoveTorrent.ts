@@ -24,4 +24,4 @@ export class MoveTorrentRequest extends AbstractRequest<MoveTorrentRequestArgume
   }
 }
 
-export interface MoveTorrentResponse extends RpcResponse<any> {}
+export type MoveTorrentResponse = {} & RpcResponse<any>

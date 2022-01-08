@@ -64,4 +64,4 @@ export class AddTorrentRequest extends AbstractRequest<AddTorrentRequestArgument
   }
 }
 
-export interface AddTorrentResponse extends RpcResponse<GetTorrentResponseArguments> {}
+export type AddTorrentResponse = {} & RpcResponse<GetTorrentResponseArguments>

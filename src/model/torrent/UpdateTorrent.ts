@@ -104,4 +104,4 @@ export class UpdateTorrentRequest extends AbstractRequest<UpdateTorrentRequestAr
   }
 }
 
-export interface UpdateTorrentResponse extends RpcResponse<any> {}
+export type UpdateTorrentResponse = {} & RpcResponse<any>

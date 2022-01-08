@@ -20,4 +20,4 @@ export class RemoveTorrentRequest extends AbstractRequest<RemoveTorrentRequestAr
   }
 }
 
-export interface RemoveTorrentResponse extends RpcResponse<any> {}
+export type RemoveTorrentResponse = {} & RpcResponse<any>
