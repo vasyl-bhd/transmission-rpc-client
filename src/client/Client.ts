@@ -63,4 +63,6 @@ export class TransmissionClient {
   updateTorrent(req: UpdateTorrentRequest): Promise<UpdateTorrentResponse> {
     return this.request(req);
   }
+
+  stopTorrent(req: )
 }

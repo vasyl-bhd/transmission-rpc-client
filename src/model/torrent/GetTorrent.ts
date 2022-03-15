@@ -172,7 +172,7 @@ export type Torrent = {
   webseedsSendingToUs: number;
 }
 
-type TorrentKey = keyof Torrent;
+export type TorrentKey = keyof Torrent;
 
 export type GetTorrentRequestArguments = {
   fields: TorrentKey[];
