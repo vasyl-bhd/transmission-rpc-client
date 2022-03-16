@@ -1,11 +1,13 @@
-import axios, { AxiosResponse } from 'axios';
-import { GetTorrentRequest, GetTorrentResponse } from '../model/torrent/GetTorrent';
-import { ClientConfig } from './ClientConfig';
-import { AddTorrentRequest, AddTorrentResponse } from '../model/torrent/AddTorrent';
-import { Argument, RpcRequest, RpcResponse } from '../model/torrent/CommonTypes';
-import { MoveTorrentRequest, MoveTorrentResponse } from '../model/torrent/MoveTorrent';
-import { RemoveTorrentRequest, RemoveTorrentResponse } from '../model/torrent/RemoveTorrent';
-import { UpdateTorrentRequest, UpdateTorrentResponse } from '../model/torrent/UpdateTorrent';
+import axios, {AxiosResponse} from 'axios';
+import {GetTorrentRequest, GetTorrentResponse} from '../model/torrent/GetTorrent';
+import {ClientConfig} from './ClientConfig';
+import {AddTorrentRequest, AddTorrentResponse} from '../model/torrent/AddTorrent';
+import {Argument, RpcRequest, RpcResponse} from '../model/torrent/CommonTypes';
+import {MoveTorrentRequest, MoveTorrentResponse} from '../model/torrent/MoveTorrent';
+import {RemoveTorrentRequest, RemoveTorrentResponse} from '../model/torrent/RemoveTorrent';
+import {UpdateTorrentRequest, UpdateTorrentResponse} from '../model/torrent/UpdateTorrent';
+import {StopTorrentRequest, StopTorrentResponse} from "../model/torrent/StopTorrent";
+import {StartTorrentRequest, StartTorrentResponse} from "../model/torrent/StartTorrent";
 
 export class TransmissionClient {
   private readonly csrfHeader: string = 'X-Transmission-Session-Id';
@@ -64,5 +66,11 @@ export class TransmissionClient {
     return this.request(req);
   }
 
-  stopTorrent(req: )
+  stopTorrent(req: StopTorrentRequest): Promise<StopTorrentResponse> {
+    return this.request(req);
+  }
+
+  startTorrent(req: StartTorrentRequest): Promise<StartTorrentResponse> {
+    return this.request(req);
+  }
 }

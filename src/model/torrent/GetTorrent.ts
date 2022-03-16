@@ -113,13 +113,13 @@ export type Torrent = {
   downloadLimited: boolean;
   editDate: number;
   error: number;
-  errorstring: string;
+  errorString: string;
   eta: number;
   etaIdle: number;
   'file-count': number;
   files: Files[];
   fileStats: FileStats[];
-  hashstring: string;
+  hashString: string;
   haveUnchecked: number;
   haveValid: number;
   honorsSessionLimits: boolean;
