@@ -35,23 +35,23 @@ export type AddTorrentRequestArguments = {
   /**
    *  indices of file(s) to download
    */
-  'files-wanted': number[];
+  'files-wanted'?: number[];
   /**
    *  indices of file(s) to not download
    */
-  'files-unwanted': number[];
+  'files-unwanted'?: number[];
   /**
    *  indices of high-priority file(s)
    */
-  'priority-high': number[];
+  'priority-high'?: number[];
   /**
    *  indices of low-priority file(s)
    */
-  'priority-low': number[];
+  'priority-low'?: number[];
   /**
    *  indices of normal-priority file(s)
    */
-  'priority-normal': number[];
+  'priority-normal'?: number[];
 } & Argument;
 
 export class AddTorrentRequest extends AbstractRequest<AddTorrentRequestArguments> {
