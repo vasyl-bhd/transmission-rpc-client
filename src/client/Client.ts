@@ -36,9 +36,15 @@ export class TransmissionClient {
         .post<RES>(this.url, req, config)
         .then((res) => res.data)
         .catch((err) => {
+          console.log(err.response.headers)
           if (err.response?.status === 409) {
-            this.token = err.response.headers[`${this.csrfHeader.toLowerCase()}`];
-            return getWithToken(this.token);
+            const token = err.response.headers[`${this.csrfHeader.toLowerCase()}`]
+            if (token) {
+              this.token = token;
+              return getWithToken(this.token);
+            } else {
+              console.log("No CSRF Header is present!")
+            }
           }
           return Promise.reject(err);
         });
