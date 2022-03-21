@@ -18,11 +18,11 @@ export type UpdateTorrentRequestArguments = {
   /**
    * indices of file(s) to download
    */
-  filesWanted?: number[];
+  'files-wanted'?: number[];
   /**
    * indices of file(s) to not download
    */
-  filesUnwanted?: number[];
+  'files-unwanted'?: number[];
   /**
    * true if session upload limits are honored
    */
