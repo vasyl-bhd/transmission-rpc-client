@@ -96,7 +96,7 @@ export type UpdateTorrentRequestArguments = {
 
 export class UpdateTorrentRequest extends AbstractRequest<UpdateTorrentRequestArguments> {
   constructor(args: UpdateTorrentRequestArguments, tag?: number) {
-    super(args, TorrentActions.TORRENT_REMOVE, tag);
+    super(args, TorrentActions.TORRENT_SET, tag);
   }
 
   static of(args: UpdateTorrentRequestArguments, tag?: number) {

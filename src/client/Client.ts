@@ -38,9 +38,9 @@ export class TransmissionClient {
         .catch((err) => {
           console.log(err.response.headers)
           if (err.response?.status === 409) {
-            const token = err.response.headers[`${this.csrfHeader.toLowerCase()}`]
-            if (token) {
-              this.token = token;
+            const csrfToken = err.response.headers[`${this.csrfHeader.toLowerCase()}`]
+            if (csrfToken) {
+              this.token = csrfToken;
               return getWithToken(this.token);
             } else {
               console.log("No CSRF Header is present!")

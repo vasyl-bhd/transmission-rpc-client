@@ -8,4 +8,5 @@ export enum TorrentActions {
   TORRENT_SET_LOCATION = 'torrent-set-location',
   TORRENT_GET = 'torrent-get',
   TORRENT_ADD = 'torrent-add',
+  TORRENT_SET = 'torrent-set',
 }
