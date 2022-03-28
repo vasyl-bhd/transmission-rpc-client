@@ -2,7 +2,7 @@ import { AbstractRequest } from './AbstractRequest';
 import { Argument, RpcResponse, WithIds } from './CommonTypes';
 import { TorrentActions } from './TorrentActions';
 
-export type MoveTorrentRequestArguments = {
+export type SetTorrentLocationRequestArguments = {
   /**
    * the new torrent location
    */
@@ -14,14 +14,14 @@ export type MoveTorrentRequestArguments = {
 } & WithIds &
   Argument;
 
-export class MoveTorrentRequest extends AbstractRequest<MoveTorrentRequestArguments> {
-  constructor(args: MoveTorrentRequestArguments, tag?: number) {
+export class SetTorrentLocationRequest extends AbstractRequest<SetTorrentLocationRequestArguments> {
+  constructor(args: SetTorrentLocationRequestArguments, tag?: number) {
     super(args, TorrentActions.TORRENT_SET_LOCATION, tag);
   }
 
-  static of(args: MoveTorrentRequestArguments, tag?: number) {
-    return new MoveTorrentRequest(args, tag);
+  static of(args: SetTorrentLocationRequestArguments, tag?: number) {
+    return new SetTorrentLocationRequest(args, tag);
   }
 }
 
-export type MoveTorrentResponse = {} & RpcResponse<any>
+export type SetTorrentLocationResponse = {} & RpcResponse<any>

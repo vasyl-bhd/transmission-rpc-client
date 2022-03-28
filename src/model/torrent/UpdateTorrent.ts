@@ -42,15 +42,15 @@ export type UpdateTorrentRequestArguments = {
   /**
    * indices of high-priority file(s)
    */
-  priorityHigh?: any[];
+  'priority-high'?: any[];
   /**
    * indices of low-priority file(s)
    */
-  priorityLow?: any[];
+  'priority-low'?: any[];
   /**
    * indices of normal-priority file(s)
    */
-  priorityNormal?: any[];
+  'priority-normal'?: any[];
   /**
    * position of this torrent in its queue [0...n)
    */
