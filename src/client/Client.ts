@@ -3,11 +3,11 @@ import {GetTorrentRequest, GetTorrentResponse} from '../model/torrent/GetTorrent
 import {ClientConfig} from './ClientConfig';
 import {AddTorrentRequest, AddTorrentResponse} from '../model/torrent/AddTorrent';
 import {Argument, RpcRequest, RpcResponse} from '../model/torrent/CommonTypes';
-import {MoveTorrentRequest, MoveTorrentResponse} from '../model/torrent/SetTorrentLocation';
 import {RemoveTorrentRequest, RemoveTorrentResponse} from '../model/torrent/RemoveTorrent';
 import {UpdateTorrentRequest, UpdateTorrentResponse} from '../model/torrent/UpdateTorrent';
 import {StopTorrentRequest, StopTorrentResponse} from "../model/torrent/StopTorrent";
 import {StartTorrentRequest, StartTorrentResponse} from "../model/torrent/StartTorrent";
+import {SetTorrentLocationRequest, SetTorrentLocationResponse} from "../model/torrent/SetTorrentLocation";
 
 export class TransmissionClient {
   private readonly csrfHeader: string = 'X-Transmission-Session-Id';
@@ -60,7 +60,7 @@ export class TransmissionClient {
     return this.request(req);
   }
 
-  moveTorrent(req: MoveTorrentRequest): Promise<MoveTorrentResponse> {
+  moveTorrent(req: SetTorrentLocationRequest): Promise<SetTorrentLocationResponse> {
     return this.request(req);
   }
 
