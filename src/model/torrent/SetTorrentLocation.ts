@@ -1,6 +1,6 @@
 import { AbstractRequest } from '../AbstractRequest';
 import { Argument, RpcResponse, WithIds } from '../CommonTypes';
-import { TorrentActions } from './TorrentActions';
+import { TorrentMethods } from './TorrentMethods';
 
 export type SetTorrentLocationRequestArguments = {
   /**
@@ -16,7 +16,7 @@ export type SetTorrentLocationRequestArguments = {
 
 export class SetTorrentLocationRequest extends AbstractRequest<SetTorrentLocationRequestArguments> {
   private constructor(args: SetTorrentLocationRequestArguments, tag?: number) {
-    super(args, TorrentActions.TORRENT_SET_LOCATION, tag);
+    super(args, TorrentMethods.TORRENT_SET_LOCATION, tag);
   }
 
   static of(args: SetTorrentLocationRequestArguments, tag?: number) {

@@ -1,6 +1,6 @@
 import { AbstractRequest } from '../AbstractRequest';
 import { Argument, RpcResponse, WithIds } from '../CommonTypes';
-import { TorrentActions } from './TorrentActions';
+import { TorrentMethods } from './TorrentMethods';
 
 export type RemoveTorrentRequestArguments = {
   /**
@@ -12,7 +12,7 @@ export type RemoveTorrentRequestArguments = {
 
 export class RemoveTorrentRequest extends AbstractRequest<RemoveTorrentRequestArguments> {
   private constructor(args: RemoveTorrentRequestArguments, tag?: number) {
-    super(args, TorrentActions.TORRENT_REMOVE, tag);
+    super(args, TorrentMethods.TORRENT_REMOVE, tag);
   }
 
   static of(args: RemoveTorrentRequestArguments, tag?: number) {

@@ -5,9 +5,17 @@ import {AddTorrentRequest, AddTorrentResponse} from '../model/torrent/AddTorrent
 import {Argument, RpcRequest, RpcResponse} from '../model/CommonTypes';
 import {RemoveTorrentRequest, RemoveTorrentResponse} from '../model/torrent/RemoveTorrent';
 import {UpdateTorrentRequest, UpdateTorrentResponse} from '../model/torrent/UpdateTorrent';
-import {StopTorrentRequest, StopTorrentResponse} from "../model/torrent/StopTorrent";
-import {StartTorrentRequest, StartTorrentResponse} from "../model/torrent/StartTorrent";
 import {SetTorrentLocationRequest, SetTorrentLocationResponse} from "../model/torrent/SetTorrentLocation";
+import {GetSessionRequest, GetSessionResponse, SetSessionRequest, SetSessionResponse} from "../model/session/Session";
+import {FreeSpaceRequest, FreeSpaceResponse} from "../model/session/FreeSpace";
+import {SessionStatsRequest, SessionStatsResponse} from "../model/session/SessionStats";
+import {
+  ReannounceTorrentRequest,
+  StartNowTorrentRequest,
+  StartTorrentRequest,
+  StopTorrentRequest,
+  TorrentActionResponse, VerifyTorrentRequest
+} from "../model/torrent/TorrentAction";
 
 export class TransmissionClient {
   private readonly csrfHeader: string = 'X-Transmission-Session-Id';
@@ -72,11 +80,42 @@ export class TransmissionClient {
     return this.request(req);
   }
 
-  stopTorrent(req: StopTorrentRequest): Promise<StopTorrentResponse> {
+  stopTorrent(req: StopTorrentRequest): Promise<TorrentActionResponse> {
     return this.request(req);
   }
 
-  startTorrent(req: StartTorrentRequest): Promise<StartTorrentResponse> {
+  startTorrent(req: StartTorrentRequest): Promise<TorrentActionResponse> {
     return this.request(req);
+  }
+
+  /**
+   * Start torrent bypassing queueing
+   */
+  startTorrentNow(req: StartNowTorrentRequest): Promise<TorrentActionResponse> {
+    return this.request(req);
+  }
+
+  verifyTorrent(req: VerifyTorrentRequest): Promise<TorrentActionResponse> {
+    return this.request(req);
+  }
+
+  torrentReannounce(req: ReannounceTorrentRequest): Promise<TorrentActionResponse> {
+    return this.request(req);
+  }
+
+  getSession(req: GetSessionRequest): Promise<GetSessionResponse> {
+    return this.request(req);
+  }
+
+  setSession(req: SetSessionRequest): Promise<SetSessionResponse> {
+    return this.request(req);
+  }
+
+  getFreeSpace(req: FreeSpaceRequest): Promise<FreeSpaceResponse> {
+    return this.request(req);
+  }
+
+  getSessionStats(req: SessionStatsRequest): Promise<SessionStatsResponse> {
+    return this.request(req)
   }
 }

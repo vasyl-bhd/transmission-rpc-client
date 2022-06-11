@@ -1,5 +1,5 @@
 import {AbstractRequest} from "../AbstractRequest";
-import {SessionActions} from "./SessionActions";
+import {SessionMethods} from "./SessionMethods";
 import {RpcResponse} from "../CommonTypes";
 
 export type CurrentStats = {
@@ -31,7 +31,7 @@ export type SessionStatsArguments = {
 export class SessionStatsRequest extends AbstractRequest<any> {
 
     private constructor(args: any, tag?: number) {
-        super(args, SessionActions.SESSION_STATS, tag);
+        super(args, SessionMethods.SESSION_STATS, tag);
     }
 
     static of(tag?: number) {

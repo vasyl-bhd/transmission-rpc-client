@@ -1,5 +1,5 @@
 import {AbstractRequest} from "../AbstractRequest";
-import {SessionActions} from "./SessionActions";
+import {SessionMethods} from "./SessionMethods";
 import {RpcResponse} from "../CommonTypes";
 
 export type Units = {
@@ -228,7 +228,7 @@ export type SessionArguments = {
 export class GetSessionRequest extends AbstractRequest<any> {
 
     private constructor(args: any, tag?: number) {
-        super(args, SessionActions.SESSION_GET, tag);
+        super(args, SessionMethods.SESSION_GET, tag);
     }
 
     static of(tag?: number) {
@@ -241,7 +241,7 @@ export type GetSessionResponse = {} & RpcResponse<SessionArguments>
 export class SetSessionRequest extends AbstractRequest<SessionArguments> {
 
     private constructor(args: SessionArguments, tag?: number) {
-        super(args, SessionActions.SESSION_SET, tag);
+        super(args, SessionMethods.SESSION_SET, tag);
     }
 
     static of(args: SessionArguments, tag?: number) {

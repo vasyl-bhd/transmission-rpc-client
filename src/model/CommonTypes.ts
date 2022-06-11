@@ -1,5 +1,5 @@
-import { TorrentActions } from './torrent/TorrentActions';
-import {SessionActions} from "./session/SessionActions";
+import { TorrentMethods } from './torrent/TorrentMethods';
+import {SessionMethods} from "./session/SessionMethods";
 
 export type WithIds = {
   /**
@@ -19,7 +19,7 @@ export type WithIds = {
 export type Argument = {};
 
 export type RpcRequest<R extends Argument> = {
-  method: TorrentActions | SessionActions;
+  method: TorrentMethods | SessionMethods;
   arguments: R;
   tag?: number;
 };

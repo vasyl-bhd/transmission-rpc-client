@@ -1,4 +1,4 @@
-export enum TorrentActions {
+export enum TorrentMethods {
   TORRENT_START = 'torrent-start',
   TORRENT_START_NOW = 'torrent-start-now',
   TORRENT_STOP = 'torrent-stop',

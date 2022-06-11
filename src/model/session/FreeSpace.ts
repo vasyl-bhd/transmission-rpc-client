@@ -1,6 +1,6 @@
 import {Argument, RpcResponse} from "../CommonTypes";
 import {AbstractRequest} from "../AbstractRequest";
-import {SessionActions} from "./SessionActions";
+import {SessionMethods} from "./SessionMethods";
 
 
 export type FreeSpaceResponseArguments = {
@@ -23,7 +23,7 @@ export type FreeSpaceRequestArguments = {
 
 export class FreeSpaceRequest extends AbstractRequest<FreeSpaceRequestArguments> {
     private constructor(args: FreeSpaceRequestArguments, tag?: number) {
-        super(args, SessionActions.FREE_SPACE, tag);
+        super(args, SessionMethods.FREE_SPACE, tag);
     }
 
     static of(path: string, tag?: number): FreeSpaceRequest {
