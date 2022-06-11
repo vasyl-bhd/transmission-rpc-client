@@ -2,7 +2,7 @@ import {Argument, RpcResponse, WithIds} from "../CommonTypes";
 import {AbstractRequest} from "../AbstractRequest";
 import {TorrentMethods} from "./TorrentMethods";
 import {RemoveTorrentRequestArguments} from "./RemoveTorrent";
-
+/* tslint:disable:max-classes-per-file */
 export type ActionArguments = {
 } & WithIds & Argument
 

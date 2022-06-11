@@ -2,6 +2,7 @@ import {AbstractRequest} from "../AbstractRequest";
 import {SessionMethods} from "./SessionMethods";
 import {RpcResponse} from "../CommonTypes";
 
+/* tslint:disable:max-classes-per-file */
 export type Units = {
     /**
      * 4 strings: KB/s, MB/s, GB/s, TB/s

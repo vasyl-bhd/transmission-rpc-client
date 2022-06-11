@@ -1,4 +1,4 @@
-export declare enum SessionMethods {
+export enum SessionMethods {
   SESSION_GET = 'session-get',
   SESSION_SET = 'session-set',
   SESSION_STATS = 'session-stats',
