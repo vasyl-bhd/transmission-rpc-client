@@ -2,7 +2,7 @@ import axios, {AxiosResponse} from 'axios';
 import {GetTorrentRequest, GetTorrentResponse} from '../model/torrent/GetTorrent';
 import {ClientConfig} from './ClientConfig';
 import {AddTorrentRequest, AddTorrentResponse} from '../model/torrent/AddTorrent';
-import {Argument, RpcRequest, RpcResponse} from '../model/torrent/CommonTypes';
+import {Argument, RpcRequest, RpcResponse} from '../model/CommonTypes';
 import {RemoveTorrentRequest, RemoveTorrentResponse} from '../model/torrent/RemoveTorrent';
 import {UpdateTorrentRequest, UpdateTorrentResponse} from '../model/torrent/UpdateTorrent';
 import {StopTorrentRequest, StopTorrentResponse} from "../model/torrent/StopTorrent";

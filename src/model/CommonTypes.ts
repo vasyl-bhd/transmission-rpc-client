@@ -1,4 +1,5 @@
-import { TorrentActions } from './TorrentActions';
+import { TorrentActions } from './torrent/TorrentActions';
+import {SessionActions} from "./session/SessionActions";
 
 export type WithIds = {
   /**
@@ -18,7 +19,7 @@ export type WithIds = {
 export type Argument = {};
 
 export type RpcRequest<R extends Argument> = {
-  method: TorrentActions;
+  method: TorrentActions | SessionActions;
   arguments: R;
   tag?: number;
 };

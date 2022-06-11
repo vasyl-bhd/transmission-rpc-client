@@ -1,5 +1,5 @@
-import { AbstractRequest } from './AbstractRequest';
-import { Argument, RpcResponse, WithIds } from './CommonTypes';
+import { AbstractRequest } from '../AbstractRequest';
+import { Argument, RpcResponse, WithIds } from '../CommonTypes';
 import { TorrentActions } from './TorrentActions';
 
 export type UpdateTorrentRequestArguments = {
@@ -95,7 +95,7 @@ export type UpdateTorrentRequestArguments = {
   Argument;
 
 export class UpdateTorrentRequest extends AbstractRequest<UpdateTorrentRequestArguments> {
-  constructor(args: UpdateTorrentRequestArguments, tag?: number) {
+  private constructor(args: UpdateTorrentRequestArguments, tag?: number) {
     super(args, TorrentActions.TORRENT_SET, tag);
   }
 

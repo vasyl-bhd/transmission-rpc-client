@@ -1,5 +1,5 @@
-import { AbstractRequest } from './AbstractRequest';
-import { Argument, RpcResponse, WithIds } from './CommonTypes';
+import { AbstractRequest } from '../AbstractRequest';
+import { Argument, RpcResponse, WithIds } from '../CommonTypes';
 import { TorrentActions } from './TorrentActions';
 
 export type Files = {
@@ -184,7 +184,7 @@ export type GetTorrentResponseArguments = {
 } & Argument;
 
 export class GetTorrentRequest extends AbstractRequest<GetTorrentRequestArguments> {
-  constructor(args: GetTorrentRequestArguments, tag?: number) {
+  private constructor(args: GetTorrentRequestArguments, tag?: number) {
     super(args, TorrentActions.TORRENT_GET, tag);
   }
 
