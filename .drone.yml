@@ -7,7 +7,15 @@ volumes:
     temp: {}
 
 steps:
-  - name: npm
+  - name: build
+    image: node:13.12.0-alpine
+    volumes:
+      - name: build-folder
+        path: /build
+    commands:
+      - npm i
+      - echo "Building app"
+  - name: publish
     image: plugins/npm
     settings:
       username:
