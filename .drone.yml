@@ -27,3 +27,6 @@ steps:
       email:
         from_secret:
           npm_email
+      token:
+        from_secret:
+          npm_token
