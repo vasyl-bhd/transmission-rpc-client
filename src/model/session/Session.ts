@@ -239,13 +239,13 @@ export class GetSessionRequest extends AbstractRequest<any> {
 
 export type GetSessionResponse = {} & RpcResponse<SessionArguments>
 
-export class SetSessionRequest extends AbstractRequest<SessionArguments> {
+export class SetSessionRequest extends AbstractRequest<Partial<SessionArguments>> {
 
-    private constructor(args: SessionArguments, tag?: number) {
+    private constructor(args: Partial<SessionArguments>, tag?: number) {
         super(args, SessionMethods.SESSION_SET, tag);
     }
 
-    static of(args: SessionArguments, tag?: number) {
+    static of(args: Partial<SessionArguments>, tag?: number) {
         return new SetSessionRequest(args, tag)
     }
 }
