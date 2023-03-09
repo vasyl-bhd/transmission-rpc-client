@@ -44,7 +44,7 @@ export class TransmissionClient {
         .post<RES>(this.url, req, config)
         .then((res) => res.data)
         .catch((err) => {
-          console.log(err.response.headers)
+          console.log(err.response)
           if (err.response?.status === 409) {
             const csrfToken = err.response.headers[`${this.csrfHeader.toLowerCase()}`]
             if (csrfToken) {

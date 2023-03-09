@@ -1,7 +1,7 @@
 {
   "name": "transmission-rpc-client",
-  "version": "1.4.2",
-  "description": "Transmission client. More info in Git Repo",
+  "version": "1.4.3",
+  "description": "Transmission client for V3. More info in Git Repo",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
